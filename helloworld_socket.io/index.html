@@ -1,0 +1,33 @@
+<html>
+
+<head>
+    <title>Arduino Node ping pong</title>
+
+    <script src="/socket.io/socket.io.js"></script>
+      <script>
+
+var socket = io.connect('http://localhost');
+socket.on('news', function (data) {
+    console.log(data);
+});
+socket.on('pong', function (data) {
+    console.log('received the pong!');
+    console.log(data);
+});
+
+
+
+function ping() {
+    console.log('try to send a ping');
+    socket.emit('ping', { data: 'ping' });
+}
+
+    </script>
+</head>
+
+<body>
+    <h1>Dudee</h1>
+    <button type="button" onclick="ping()">Ping arduino!</button>
+</body>
+
+</html>
